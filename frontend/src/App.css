@@ -1,0 +1,373 @@
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.app-header h1 {
+  color: #2563eb;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app-header p {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.upload-section {
+  position: relative;
+}
+
+.upload-section:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+}
+
+.upload-summary {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #0ea5e9;
+  border-radius: 16px;
+  padding: 32px;
+  text-align: left;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  box-shadow: 0 4px 12px -2px rgba(14, 165, 233, 0.1);
+}
+
+.upload-summary h3 {
+  color: #0c4a6e;
+  margin: 0 0 24px 0;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-summary h3::before {
+  content: "🎯";
+  font-size: 22px;
+}
+
+.summary-section {
+  margin-bottom: 24px;
+}
+
+.summary-section h4 {
+  color: #0369a1;
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summary-section ul {
+  margin: 0;
+  padding-left: 24px;
+  color: #075985;
+}
+
+.summary-section li {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.analysis-actions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #bae6fd;
+  text-align: center;
+}
+
+.analyze-button {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.analyze-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.3);
+}
+
+.analyze-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  
+  .app-header p {
+    font-size: 1rem;
+  }
+  
+  .main-content {
+    gap: 2rem;
+  }
+  
+  .upload-section:not(:last-of-type)::after {
+    bottom: -1rem;
+    width: 40px;
+  }
+  
+  .upload-summary {
+    padding: 24px;
+    margin-top: 1.5rem;
+  }
+  
+  .upload-summary h3 {
+    font-size: 18px;
+  }
+  
+  .summary-section h4 {
+    font-size: 15px;
+  }
+  
+  .analyze-button {
+    padding: 10px 24px;
+    font-size: 15px;
+  }
+.visualization-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e5e7eb;
+}
+
+/* Analysis Progress Styles */
+.analysis-progress {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.analysis-progress h3 {
+  color: #1e293b;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.spinner {
+  display: inline-block;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.analysis-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.analysis-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.analysis-step.current {
+  border-color: #3b82f6;
+  background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.analysis-step.completed {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #d1fae5, #dcfce7);
+}
+
+.step-indicator {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.step-check {
+  color: #10b981;
+}
+
+.step-spinner {
+  color: #3b82f6;
+}
+
+.step-pending {
+  color: #6b7280;
+  opacity: 0.5;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-name {
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.step-description {
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.analysis-complete {
+  margin-top: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  border: 2px solid #10b981;
+  border-radius: 12px;
+}
+
+.complete-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.complete-icon {
+  font-size: 24px;
+}
+
+}
+
+@media (max-width: 768px) {
+  .analysis-progress {
+    padding: 24px;
+    margin-top: 1.5rem;
+  }
+  
+  .analysis-progress h3 {
+    font-size: 20px;
+  }
+  
+  .analysis-step {
+    padding: 16px;
+    gap: 12px;
+  }
+  
+  .step-name {
+    font-size: 15px;
+  }
+  
+  .step-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-summary {
+    padding: 20px;
+  }
+  
+  .upload-summary h3 {
+    font-size: 16px;
+  }
+  
+  .summary-section {
+    margin-bottom: 20px;
+  }
+  
+  .analyze-button {
+    width: 100%;
+    padding: 12px;
+  }
+  
+  .analysis-progress {
+    padding: 20px;
+  }
+  
+  .analysis-progress h3 {
+    font-size: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .analysis-step {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .step-indicator {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+  
+  .complete-message {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
