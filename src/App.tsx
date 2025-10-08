@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ContractUpload from './components/ContractUpload'
 import ForecastUpload from './components/ForecastUpload'
+import DataVisualization from './components/DataVisualization'
 import './App.css'
 
 function App() {
@@ -82,6 +83,11 @@ function App() {
             </div>
           </div>
         )}
+
+        {/* Data Visualization Section - Always visible for demo purposes */}
+        <div className="visualization-section">
+          <DataVisualization />
+        </div>
       </div>
     </>
   )

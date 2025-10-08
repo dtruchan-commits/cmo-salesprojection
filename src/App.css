@@ -175,6 +175,12 @@
     padding: 10px 24px;
     font-size: 15px;
   }
+.visualization-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid #e5e7eb;
+}
+
 }
 
 @media (max-width: 480px) {
